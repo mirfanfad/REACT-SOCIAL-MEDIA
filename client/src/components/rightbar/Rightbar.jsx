@@ -44,24 +44,24 @@ export default function Rightbar({ profile }) {
         <h4 className="rightbarTitle">User Friends</h4>
         <div className="rightbarFollowings">
           <div className="rightbarFollowing">
-            <img src="assets/person/2.jpeg" alt="" className="rightbarFollowingImg" />
+            <img src="assets/person/1.jpeg" alt="" className="rightbarFollowingImg" />
             <span className="rightbarFollowingName">Jhon Pantau</span>
           </div>
           <div className="rightbarFollowing">
             <img src="assets/person/3.jpeg" alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">Jhon Pantau</span>
+            <span className="rightbarFollowingName">Jane Kennel</span>
           </div>
           <div className="rightbarFollowing">
             <img src="assets/person/4.jpeg" alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">Jhon Pantau</span>
+            <span className="rightbarFollowingName">Sinner</span>
           </div>
           <div className="rightbarFollowing">
             <img src="assets/person/5.jpeg" alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">Jhon Pantau</span>
+            <span className="rightbarFollowingName">Yayan Heryanto</span>
           </div>
           <div className="rightbarFollowing">
             <img src="assets/person/6.jpeg" alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">Jhon Pantau</span>
+            <span className="rightbarFollowingName">Bio Fanirwansyah</span>
           </div>
         </div>
       </>
