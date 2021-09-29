@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./topbar.css";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
-
+import { Link, useHistory } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 export default function Topbar() {
+  const history = useHistory();
+
+  const { user } = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
-        <span className="logo">NafryzeSocial</span>
+        <span className="logo" onClick={() => history.push("/")}>
+          NafryzeSocial
+        </span>
       </div>
       <div className="topbarCenter">
         <div className="searchbar">
@@ -36,7 +44,18 @@ export default function Topbar() {
             <span className="topbarIconBadge">1</span>
           </div>
         </div>
-        <img src="/assets/person/1.jpeg" alt="" className="topbarImg" />
+        <Link to={`/profile/${user.username}`}>
+          <img
+            src={
+              PF +
+              (user.profilePicture
+                ? user.profilePicture
+                : "person/noAvatar.png")
+            }
+            alt=""
+            className="topbarImg"
+          />
+        </Link>
       </div>
     </div>
   );
