@@ -5,7 +5,6 @@ import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 export default function Topbar() {
   const history = useHistory();
-
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 

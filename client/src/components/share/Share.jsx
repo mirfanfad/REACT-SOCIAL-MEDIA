@@ -9,11 +9,10 @@ export default function Share() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const desc = useRef();
   const [file, setFile] = useState(null);
-  console.log(file);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(desc.current.value){
+    if (desc.current.value) {
       const newPost = {
         userId: user._id,
         desc: desc.current.value,
@@ -24,12 +23,11 @@ export default function Share() {
         data.append("name", fileName);
         data.append("file", file);
         newPost.img = fileName;
-        console.log(newPost);
         try {
           await axios.post("/upload", data);
         } catch (err) {}
       }
-  
+
       try {
         await axios.post("/posts", newPost);
         window.location.reload();
