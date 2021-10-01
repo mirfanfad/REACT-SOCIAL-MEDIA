@@ -2,10 +2,12 @@ import { useContext, useRef } from "react";
 import "./login.css";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
+import { Link, useHistory } from "react-router-dom";
 
 export default function Login() {
   const email = useRef();
   const password = useRef();
+  const history = useHistory();
 
   const { user, isFetching, dispatch } = useContext(AuthContext);
 
@@ -15,6 +17,11 @@ export default function Login() {
       { email: email.current.value, password: password.current.value },
       dispatch
     );
+  };
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    history.push("/register");
   };
 
   console.log(user);
@@ -44,9 +51,11 @@ export default function Login() {
               required
               minLength="6"
             />
-            <button className="loginButton" type="submit">{isFetching ? "Loading" : "Sign In"}</button>
+            <button className="loginButton" type="submit">
+              {isFetching ? "Loading" : "Sign In"}
+            </button>
             <span className="loginForgot">Forgot Password</span>
-            <button className="loginRegisterButton">
+            <button className="loginRegisterButton" onClick={handleRegister}>
               Create a New Account
             </button>
           </form>

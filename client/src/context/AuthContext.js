@@ -2,7 +2,8 @@ import { createContext, useReducer } from "react";
 import AuthReducer from "./AuthReducer";
 
 const INITIAL_STATE = {
-  user: {
+  user: 
+  {
     _id: "6152c06602c5176bd49fa92c",
     username: "Irfan",
     email: "mirfanfad@gmail.com",
@@ -13,13 +14,14 @@ const INITIAL_STATE = {
     followings: ["6152b9b132e986a5c7c380ec"],
     isAdmin: false,
     createdAt: { $date: { $numberLong: "1632813158562" } },
-    updatedAt: { $date: { $numberLong: "1632888433736" } },
+    updatedAt: { $date: { $numberLong: "1633067854107" } },
     __v: { $numberInt: "0" },
     city: "Jakarta",
     from: "Banten",
     relationship: { $numberInt: "1" },
     desc: "Hey There!",
-  },
+  }
+  ,
   isFetching: false,
   error: false,
 };

@@ -10,13 +10,15 @@ import { Add, Remove } from "@material-ui/icons";
 export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
-  const { user: currentUser } = useContext(AuthContext);
-  const [followed, setFollowed] = useState(false);
+  const { user: currentUser, dispatch } = useContext(AuthContext);
+  const [followed, setFollowed] = useState(
+    currentUser.followings.includes(user?._id)
+  );
 
   useEffect(() => {
     setFollowed(currentUser.followings.includes(user?._id));
-  }, [currentUser, user?._id]);
-
+  }, [currentUser.followings, user?._id]);
+ 
   useEffect(() => {
     if (user) {
       const getFriends = async () => {
@@ -31,17 +33,18 @@ export default function Rightbar({ user }) {
     }
   }, [user]);
 
-  const handleFollow = async (e) => {
-    e.preventDefault();
+  const handleFollow = async () => {
     try {
       if (followed) {
-        await axios.put("/users/" + user._id + "/follow", {
-          userId: currentUser._id,
-        });
-      } else {
         await axios.put("/users/" + user._id + "/unfollow", {
           userId: currentUser._id,
         });
+        dispatch({ type: "UNFOLLOW", payload: user._id });
+      } else {
+        await axios.put("/users/" + user._id + "/follow", {
+          userId: currentUser._id,
+        });
+        dispatch({ type: "FOLLOW", payload: user._id });
       }
     } catch (error) {
       console.log(error);
